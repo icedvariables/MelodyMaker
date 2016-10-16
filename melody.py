@@ -7,8 +7,19 @@ C_MAJOR_SCALE5 = ["c5", "d5", "e5", "f5", "g5", "a5", "b5"]
 
 C_MINOR_SCALE = ["c3", "d3", "eb3", "f3", "g3", "ab3", "bb3"]
 
-def generateSong(structure="ABCDCECCF", definitions={"A":(C_MAJOR_SCALE3, [1, 2, 4], 4), "B":(C_MAJOR_SCALE4, [2, 4, 8], 8), "C":(C_MAJOR_SCALE5, [2, 4, 8], 4), "D":(C_MAJOR_SCALE4, [2, 4, 8], 8), "E":(C_MAJOR_SCALE4, [4, 8, 16], 4), "F":(C_MAJOR_SCALE3, [1, 2, 4], 4)}):
-    pass
+def generateSong(structure="ABACA", definitions={"A":(C_MAJOR_SCALE5, [2, 4, 8], 2), "B":(C_MAJOR_SCALE3, [1, 2, 4], 2), "C":(C_MAJOR_SCALE4, [4, 8, 16], 4)}):
+    songParts = {}
+    for name, args in definitions.iteritems():
+        songParts[name] = generateMelody(*args)
+    
+    print songParts
+    
+    song = []
+    
+    for key in structure:
+        song += songParts[key]
+    
+    return song
 
 
 
@@ -19,7 +30,7 @@ def generateMelody(scale, noteLengths=[2, 4, 8], length=10):
         print "BAR " + str(bar) + ":"
         melody += generateBar(scale, noteLengths)
     
-    print "\n Generated " + str(length) + " bars and " + str(len(melody)) + " notes\n"
+    print "\nGenerated " + str(length) + " bars and " + str(len(melody)) + " notes\n"
     return melody
 
 
@@ -46,7 +57,7 @@ def generateBar(scale, noteLengths):
 
 
 if __name__=="__main__":
-    melody = generateMelody(C_MAJOR_SCALE3)
-    print melody
+    song = generateSong()
+    print song
     
-    pse.make_wav(melody, fn="output.wav", bpm=150)
+    pse.make_wav(song, fn="output.wav", bpm=150)
