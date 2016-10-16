@@ -3,7 +3,7 @@ import random
 
 C_MAJOR_SCALE = ["c3", "d3", "e3", "f3", "g3", "a4", "b4"]
 
-def generateMelody(scale, noteLengths=[1, 2, 4, 8], length=2):
+def generateMelody(scale, noteLengths=[2, 4, 8], length=2):
     counter = 0
     melody = []
     
@@ -24,4 +24,4 @@ if __name__=="__main__":
     melody = generateMelody(C_MAJOR_SCALE)
     print melody
     
-    pss.make_wav(melody, fn="output.wav", bpm=150)    pse.make_wav(melody, fn="output.wav", bpm=150)
+    pse.make_wav(melody, fn="output.wav", bpm=150)
