@@ -5,9 +5,11 @@ C_MAJOR_SCALE3 = ["c3", "d3", "e3", "f3", "g3", "a3", "b3"]
 C_MAJOR_SCALE4 = ["c4", "d4", "e4", "f4", "g4", "a4", "b4"]
 C_MAJOR_SCALE5 = ["c5", "d5", "e5", "f5", "g5", "a5", "b5"]
 
-C_MINOR_SCALE = ["c3", "d3", "eb3", "f3", "g3", "ab3", "bb3"]
+C_MINOR_SCALE3 = ["c3", "d3", "eb3", "f3", "g3", "ab3", "bb3"]
+C_MINOR_SCALE4 = ["c4", "d4", "eb4", "f4", "g4", "ab4", "bb4"]
+C_MINOR_SCALE5 = ["c5", "d5", "eb5", "f5", "g5", "ab5", "bb5"]
 
-def generateSong(structure="ACCBBCCDDCCCCA", definitions={"A":(C_MAJOR_SCALE3, [1, 2, 4], 2), "B":(C_MAJOR_SCALE4, [2, 4, 8], 2), "C":(C_MAJOR_SCALE5, [4, 8], 2), "D":(C_MAJOR_SCALE4, [2, 4, 8], 4)}):
+def generateSong(structure="ACCBBCCDDCCCCA", definitions={"A":(C_MINOR_SCALE3, [1, 2, 4], 2), "B":(C_MINOR_SCALE4, [2, 4, 8], 2), "C":(C_MINOR_SCALE5, [4, 8], 2), "D":(C_MINOR_SCALE4, [2, 4, 8], 4)}):
     songParts = {}
     for name, args in definitions.iteritems():
         songParts[name] = generateMelody(*args)
