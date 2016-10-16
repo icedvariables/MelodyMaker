@@ -7,7 +7,7 @@ C_MAJOR_SCALE5 = ["c5", "d5", "e5", "f5", "g5", "a5", "b5"]
 
 C_MINOR_SCALE = ["c3", "d3", "eb3", "f3", "g3", "ab3", "bb3"]
 
-def generateSong(structure="ABACA", definitions={"A":(C_MAJOR_SCALE5, [2, 4, 8], 2), "B":(C_MAJOR_SCALE3, [1, 2, 4], 2), "C":(C_MAJOR_SCALE4, [4, 8, 16], 4)}):
+def generateSong(structure="ACCBBCCDDCCCCA", definitions={"A":(C_MAJOR_SCALE3, [1, 2, 4], 2), "B":(C_MAJOR_SCALE4, [2, 4, 8], 2), "C":(C_MAJOR_SCALE5, [4, 8], 2), "D":(C_MAJOR_SCALE4, [2, 4, 8], 4)}):
     songParts = {}
     for name, args in definitions.iteritems():
         songParts[name] = generateMelody(*args)
