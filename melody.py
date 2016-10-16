@@ -11,9 +11,11 @@ def generateMelody(scale, noteLengths=[1, 2, 4, 8], length=2):
         note = random.choice(scale)
         noteLength = random.choice(noteLengths)
         
-        counter += (1 / noteLength)
+        counter += (1.0 / noteLength)
         
         melody.append((note, noteLength))
+        
+        print "Chose note: " + note + " Length: 1/" + str(noteLength) + " Counter: " + str(counter)
     
     return melody
 
