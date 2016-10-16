@@ -4,20 +4,35 @@ import random
 C_MAJOR_SCALE = ["c3", "d3", "e3", "f3", "g3", "a4", "b4"]
 
 def generateMelody(scale, noteLengths=[2, 4, 8], length=2):
-    counter = 0
     melody = []
     
-    while(counter < length):
+    for bar in range(length):
+        print "BAR " + str(bar) + ":"
+        melody += generateBar(scale, noteLengths)
+    
+    return melody
+
+
+
+def generateBar(scale, noteLengths):
+    counter = 0
+    bar = []
+
+    while(counter < 1):
         note = random.choice(scale)
+        
         noteLength = random.choice(noteLengths)
+        if(counter + (1.0 / noteLength) > 1):
+            noteLength = (1.0 - counter).as_integer_ratio()[1] # caculate the required note length to make the bar the right length
+
+        bar.append((note, noteLength))
         
         counter += (1.0 / noteLength)
         
-        melody.append((note, noteLength))
-        
         print "Chose note: " + note + " Length: 1/" + str(noteLength) + " Counter: " + str(counter)
     
-    return melody
+    return bar
+
 
 
 if __name__=="__main__":
