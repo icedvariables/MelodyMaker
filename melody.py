@@ -1,15 +1,23 @@
 import pysynth_e as pse
 import random
 
-C_MAJOR_SCALE = ["c3", "d3", "e3", "f3", "g3", "a4", "b4"]
+C_MAJOR_SCALE3 = ["c3", "d3", "e3", "f3", "g3", "a3", "b3"]
+C_MAJOR_SCALE4 = ["c4", "d4", "e4", "f4", "g4", "a4", "b4"]
+C_MAJOR_SCALE5 = ["c5", "d5", "e5", "f5", "g5", "a5", "b5"]
 
-def generateMelody(scale, noteLengths=[2, 4, 8], length=2):
+C_MINOR_SCALE = ["c3", "d3", "eb3", "f3", "g3", "ab3", "bb3"]
+
+def generateSong(structure="ABCDCECCF", definitions={"A":(C_MAJOR_SCALE3, [1, 2, 4], 4), "B":(C_MAJOR_SCALE4, [2, 4, 8], 8), "C":(C_MAJOR_SCALE5, [2, 4, 8], 4), "D":(C_MAJOR_SCALE4, [2, 4, 8], 8), "E":(C_MAJOR_SCALE4, [4, 8, 16], 4), "F":(C_MAJOR_SCALE3, [1, 2, 4], 4))
+    pass
+
+
     melody = []
     
     for bar in range(length):
         print "BAR " + str(bar) + ":"
         melody += generateBar(scale, noteLengths)
     
+    print "\n Generated " + str(length) + " bars and " + str(len(melody)) + " notes\n"
     return melody
 
 
@@ -36,7 +44,7 @@ def generateBar(scale, noteLengths):
 
 
 if __name__=="__main__":
-    melody = generateMelody(C_MAJOR_SCALE)
+    melody = generateMelody(C_MINOR_SCALE)
     print melody
     
     pse.make_wav(melody, fn="output.wav", bpm=150)
